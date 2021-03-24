@@ -1,11 +1,13 @@
 import React from 'react';
 
+import Categories from "./components/Categories";
+
 function App() {
-  return (
-    <div>
-      Chuck, I'm coming for you!
-    </div>
-  );
+    return (
+        <>
+            <Categories/>
+        </>
+    );
 }
 
 export default App;
