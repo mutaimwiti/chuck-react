@@ -1,7 +1,12 @@
 import {Action} from "../actions/Action";
 import {FETCH_JOKE} from "../ActionTypes";
 
-export type JokeState = { icon_url: string, id: string, url: string, value: string } | {};
+export type JokeState = {
+    icon_url: string,
+    id: string,
+    url: string,
+    value: string
+} | {};
 
 const initialState: JokeState = {};
 
