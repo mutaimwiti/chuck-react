@@ -4,9 +4,10 @@ import {useParams, useHistory} from "react-router-dom";
 
 import Joke from "../components/Joke";
 import {State} from "../store/reducers";
+import NavBar from "../components/NavBar";
 import {JokeState} from "../store/reducers/joke";
 import {fetchJoke} from "../store/actions/jokes";
-import Categories from "../components/Categories";
+import {fetchCategories} from "../store/actions/categories";
 import {CategoriesState} from "../store/reducers/categories";
 
 const HomePage = () => {
@@ -15,6 +16,10 @@ const HomePage = () => {
     const {category}: any = useParams();
     const joke = useSelector<State, JokeState>((state) => state.joke);
     const categories = useSelector<State, CategoriesState>((state) => state.categories);
+
+    useEffect(() => {
+        dispatch(fetchCategories());
+    }, [dispatch]);
 
     useEffect(() => {
         if (category) {
@@ -28,8 +33,8 @@ const HomePage = () => {
 
     return (
         <>
-            <Categories categories={categories} onSelect={handleSelect}/>
-            <Joke joke={joke}/>
+            <NavBar categories={categories} onSelectCategory={handleSelect}/>
+            <Joke category={category} joke={joke}/>
         </>
     );
 }
