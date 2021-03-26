@@ -5,6 +5,7 @@ import {useParams, useHistory} from "react-router-dom";
 import Joke from "../components/Joke";
 import {State} from "../store/reducers";
 import NavBar from "../components/NavBar";
+import {getRandomElement} from "../utils";
 import {JokeState} from "../store/reducers/joke";
 import {fetchJoke} from "../store/actions/jokes";
 import {fetchCategories} from "../store/actions/categories";
@@ -25,7 +26,7 @@ const HomePage = () => {
         if (category) {
             dispatch(fetchJoke(category));
         } else if (!category && categories.length) {
-            history.push(categories[0])
+            history.push(getRandomElement(categories))
         }
     }, [category, categories, history, dispatch]);
 

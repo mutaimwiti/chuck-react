@@ -9,7 +9,7 @@ type NavBarProps = {
 
 const NavBar: React.FC<NavBarProps> = ({categories, onSelectCategory}) => {
     return <Navbar bg="light" expand="lg">
-        <Navbar.Brand>
+        <Navbar.Brand href="#" onClick={() => onSelectCategory('')}>
             Chuck React
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav"/>
