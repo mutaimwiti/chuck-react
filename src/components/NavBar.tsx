@@ -8,7 +8,7 @@ type NavBarProps = {
 }
 
 const NavBar: React.FC<NavBarProps> = ({categories, onSelectCategory}) => {
-    return <Navbar bg="light" expand="lg">
+    return <Navbar bg="primary" variant="dark">
         <Navbar.Brand href="#" onClick={() => onSelectCategory('')}>
             Chuck React
         </Navbar.Brand>
