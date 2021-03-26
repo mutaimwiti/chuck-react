@@ -1,8 +1,8 @@
 import api from "../../api";
 import {Action} from "./Action";
-import {FETCH_CATEGORIES} from "../ActionTypes";
+import {FETCH_JOKE} from "../ActionTypes";
 
-export const fetchJokeByCategory = (category: string): Action => ({
-    type: FETCH_CATEGORIES,
+export const fetchJoke = (category: string): Action => ({
+    type: FETCH_JOKE,
     request: api.jokes.get(category),
 });

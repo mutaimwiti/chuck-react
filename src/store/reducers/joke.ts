@@ -6,9 +6,9 @@ export type JokeState = {
     id: string,
     url: string,
     value: string
-} | {};
+} | null;
 
-const initialState: JokeState = {};
+const initialState: JokeState = null;
 
 const joke = (state: JokeState = initialState, action: Action) => {
     switch (action.type) {

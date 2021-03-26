@@ -4,7 +4,7 @@ import joke, {JokeState} from "./joke";
 import categories, {CategoriesState} from "./categories";
 
 export interface State {
-    jokes: JokeState,
+    joke: JokeState,
     categories: CategoriesState,
 }
 
