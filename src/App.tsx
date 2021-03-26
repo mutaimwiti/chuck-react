@@ -1,28 +1,15 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
+import {BrowserRouter, Route, Switch} from "react-router-dom";
 
-import Joke from "./components/Joke";
-import {State} from "./store/reducers";
-import {JokeState} from "./store/reducers/joke";
-import {fetchJoke} from "./store/actions/jokes";
-import Categories from "./components/Categories";
-import {CategoriesState} from "./store/reducers/categories";
+import HomePage from "./pages/HomePage";
 
 function App() {
-    const dispatch = useDispatch();
-    const joke = useSelector<State, JokeState>((state) => state.joke);
-    const categories = useSelector<State, CategoriesState>((state) => state.categories);
+    return <BrowserRouter>
+        <Switch>
+            <Route path="/:category?" component={HomePage}/>
+        </Switch>
 
-    const handleSelect = (category: string) => {
-        dispatch(fetchJoke(category));
-    };
-
-    return (
-        <>
-            <Categories categories={categories} onSelect={handleSelect}/>
-            <Joke joke={joke}/>
-        </>
-    );
+    </BrowserRouter>
 }
 
 export default App;
