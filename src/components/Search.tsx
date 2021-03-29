@@ -1,5 +1,5 @@
+import {Form, ListGroup} from "react-bootstrap";
 import React, {ChangeEvent, FormEvent, useState} from "react";
-import {Form} from "react-bootstrap";
 
 import {JokeState, SearchState} from "../store/reducers/joke";
 
@@ -22,9 +22,9 @@ const Search: React.FC<SearchProps> = ({results, onSearch}) => {
 
     return <Form onSubmit={handleSubmit}>
         <Form.Control type="text" placeholder="Search" value={query} onChange={handleChange}/>
-        <ul>
-            {results.map((joke: JokeState) => (<li>{joke.value}</li>))}
-        </ul>
+        <ListGroup>
+            {results.map((joke: JokeState) => (<ListGroup.Item>{joke.value}</ListGroup.Item>))}
+        </ListGroup>
     </Form>
 }
 
