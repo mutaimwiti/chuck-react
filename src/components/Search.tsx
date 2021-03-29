@@ -21,7 +21,8 @@ const Search: React.FC<SearchProps> = ({results, onSearch}) => {
     }
 
     return <Form onSubmit={handleSubmit}>
-        <Form.Control type="text" placeholder="Search" value={query} onChange={handleChange}/>
+        <Form.Control type="text" placeholder="Search joke" value={query} onChange={handleChange}/>
+        <br/>
         <ListGroup>
             {results.map((joke: JokeState) => (<ListGroup.Item>{joke.value}</ListGroup.Item>))}
         </ListGroup>
