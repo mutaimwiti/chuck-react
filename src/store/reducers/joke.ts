@@ -1,16 +1,16 @@
 import {Action} from "../actions/Action";
-import {FETCH_JOKE} from "../ActionTypes";
+import {FETCH_JOKE, SEARCH_JOKES} from "../ActionTypes";
 
 export type JokeState = {
     icon_url: string,
     id: string,
     url: string,
     value: string
-} | null;
+};
 
-const initialState: JokeState = null;
+export type SearchState = JokeState[];
 
-const joke = (state: JokeState = initialState, action: Action) => {
+export const joke = (state: JokeState | null = null, action: Action) => {
     switch (action.type) {
         case `${FETCH_JOKE}_SUCCESS`: {
             return action.payload;
@@ -20,4 +20,12 @@ const joke = (state: JokeState = initialState, action: Action) => {
     }
 }
 
-export default joke;
+export const searchResults = (state: SearchState = [], action: Action) => {
+    switch (action.type) {
+        case `${SEARCH_JOKES}_SUCCESS`: {
+            return action.payload.result;
+        }
+        default:
+            return state;
+    }
+}
