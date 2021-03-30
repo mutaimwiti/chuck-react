@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search should match snapshot 1`] = `
+<div>
+  <form
+    class=""
+  >
+    <div
+      class="form-group"
+    >
+      <label
+        class="form-label"
+      >
+        <b>
+          Search more jokes
+        </b>
+      </label>
+      <div
+        class="mb-3 input-group"
+      >
+        <input
+          class="form-control"
+          data-testid="search-input"
+          placeholder="Enter your search phrase e.g. food"
+          type="text"
+          value=""
+        />
+        <div
+          class="input-group-append"
+        >
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+      <small
+        class="form-text text-muted"
+      >
+        Your search phrase must be 3 characters or longer
+      </small>
+    </div>
+  </form>
+  <br />
+  <div
+    class="list-group"
+  >
+    <div
+      class="list-group-item"
+    >
+      This is a joke
+    </div>
+    <div
+      class="list-group-item"
+    >
+      This is another joke
+    </div>
+  </div>
+</div>
+`;

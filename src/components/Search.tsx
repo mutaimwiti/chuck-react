@@ -4,7 +4,7 @@ import { Alert, Button, Form, InputGroup, ListGroup } from 'react-bootstrap';
 
 import { JokeState, SearchState } from '../store/reducers/joke';
 
-type SearchProps = {
+export type SearchProps = {
   results: SearchState;
   onSearch(phrase: string): void;
   onClearSearch(): void;
@@ -54,6 +54,7 @@ const Search: React.FC<SearchProps> = ({
               type="text"
               value={query}
               onChange={handleChange}
+              data-testid="search-input"
               placeholder="Enter your search phrase e.g. food"
             />
             <InputGroup.Append>
