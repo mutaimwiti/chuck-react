@@ -12,6 +12,7 @@ type SearchProps = {
 
 const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
     const [query, setQuery] = useState('');
+    const [invalid, setInvalid] = useState(true);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
@@ -21,8 +22,10 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
         if (value.length >= 3) {
             const debouncedSearch = debounce(() => onSearch(value), 300);
             debouncedSearch();
+            setInvalid(false);
         } else {
             onClearSearch();
+            setInvalid(true);
         }
     }
 
@@ -48,10 +51,11 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
                             <Button variant="outline-secondary" onClick={handleClear}>Clear</Button>
                         </InputGroup.Append>
                     </InputGroup>
-                    <Form.Text muted>
-                        Your search phrase must be 3 characters or longer
-                    </Form.Text>
-
+                    {
+                        invalid && (<Form.Text muted>
+                            Your search phrase must be 3 characters or longer
+                        </Form.Text>)
+                    }
                 </Form.Group>
             </Form>
             <br/>
