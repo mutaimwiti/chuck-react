@@ -43,19 +43,24 @@ const Joke: React.FC<JokeProps> = ({
         <StyledCard>
           <Card.Body>
             <Card.Title>
-              <DropdownButton data-testid="category-dropdown" title={category}>
-                {categories.map((category: string) => (
-                  <Dropdown.Item
-                    key={category}
-                    data-testid={`category-dropdown-item-${category}`}
-                    onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                      handleSelectCategory(event, category);
-                    }}
-                  >
-                    {category}
-                  </Dropdown.Item>
-                ))}
-              </DropdownButton>
+              {category && (
+                <DropdownButton
+                  data-testid="category-dropdown"
+                  title={category}
+                >
+                  {categories.map((category: string) => (
+                    <Dropdown.Item
+                      key={category}
+                      data-testid={`category-dropdown-item-${category}`}
+                      onClick={(event: MouseEvent<HTMLButtonElement>) => {
+                        handleSelectCategory(event, category);
+                      }}
+                    >
+                      {category}
+                    </Dropdown.Item>
+                  ))}
+                </DropdownButton>
+              )}
             </Card.Title>
             <Card.Text>{joke.value}</Card.Text>
             <Button

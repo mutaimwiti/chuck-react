@@ -3,19 +3,19 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 
+import {
+  fetchJoke,
+  searchJokes,
+  clearSearchJokes,
+} from '../store/actions/jokes';
 import Joke from '../components/Joke';
-import { State } from '../store/reducers';
 import NavBar from '../components/NavBar';
 import Search from '../components/Search';
+import { State } from '../store/reducers';
 import { getRandomElement } from '../utils';
 import { fetchCategories } from '../store/actions/categories';
 import { CategoriesState } from '../store/reducers/categories';
 import { JokeState, SearchState } from '../store/reducers/joke';
-import {
-  clearSearchJokes,
-  fetchJoke,
-  searchJokes,
-} from '../store/actions/jokes';
 
 const HomePage = () => {
   const history = useHistory();
