@@ -35,6 +35,7 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
         event.currentTarget.blur();
         setQuery('');
         onClearSearch();
+        setValid(false);
     }
 
     return (
