@@ -50,14 +50,14 @@ describe('HomePage', function () {
 
   const dispatchMock = jest.fn();
 
-  let _onGoHome,
-    _onSearch,
-    _onClearSearch,
-    _onLoadAnotherJoke,
-    _onSelectCategory;
+  let _onGoHome: () => void,
+    _onClearSearch: () => void,
+    _onLoadAnotherJoke: () => void,
+    _onSearch: (query: string) => void,
+    _onSelectCategory: (category: string) => void;
 
   beforeEach(() => {
-    useSelector.mockImplementation((cb) =>
+    (useSelector as jest.Mock).mockImplementation((cb) =>
       cb({
         searchResults: { isLoading: false, items: jokes },
         categories,
@@ -65,20 +65,20 @@ describe('HomePage', function () {
       }),
     );
 
-    useDispatch.mockReturnValue(dispatchMock);
+    (useDispatch as jest.Mock).mockReturnValue(dispatchMock);
 
-    NavBar.mockImplementation((props) => {
+    (NavBar as jest.Mock).mockImplementation((props) => {
       _onGoHome = props.onGoHome;
       return <>***NavBar***</>;
     });
 
-    Joke.mockImplementation((props) => {
+    (Joke as jest.Mock).mockImplementation((props) => {
       _onLoadAnotherJoke = props.onLoadAnotherJoke;
       _onSelectCategory = props.onSelectCategory;
       return <>***Joke***</>;
     });
 
-    Search.mockImplementation((props) => {
+    (Search as jest.Mock).mockImplementation((props) => {
       _onSearch = props.onSearch;
       _onClearSearch = props.onClearSearch;
       return <>***Joke***</>;
@@ -86,8 +86,8 @@ describe('HomePage', function () {
   });
 
   afterEach(() => {
-    useSelector.mockClear();
-    useDispatch.mockClear();
+    (useSelector as jest.Mock).mockClear();
+    (useDispatch as jest.Mock).mockClear();
     dispatchMock.mockClear();
   });
 
