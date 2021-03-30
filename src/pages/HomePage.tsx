@@ -45,10 +45,16 @@ const HomePage = () => {
 
     return (
         <>
-            <NavBar categories={categories} onSelectCategory={handleSelect}/>
+            <NavBar onGoHome={() => handleSelect('')}/>
             <Container>
                 <Row>
-                    <Joke category={category} joke={joke} onLoadAnotherJoke={loadJoke}/>
+                    <Joke
+                        category={category}
+                        joke={joke}
+                        onLoadAnotherJoke={loadJoke}
+                        categories={categories}
+                        onSelectCategory={handleSelect}
+                    />
                 </Row>
                 <Row>
                     <Col>
