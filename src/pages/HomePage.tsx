@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {Col, Container, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams, useHistory} from "react-router-dom";
@@ -21,17 +21,21 @@ const HomePage = () => {
     const categories = useSelector<State, CategoriesState>((state) => state.categories);
     const searchResults = useSelector<State, SearchState>((state) => state.searchResults);
 
+    const loadJoke = useCallback(() => {
+        dispatch(fetchJoke(category));
+    }, [dispatch, category])
+
     useEffect(() => {
         dispatch(fetchCategories());
     }, [dispatch]);
 
     useEffect(() => {
         if (category) {
-            dispatch(fetchJoke(category));
+            loadJoke();
         } else if (!category && categories.length) {
             history.push(getRandomElement(categories))
         }
-    }, [category, categories, history, dispatch]);
+    }, [category, categories, history, dispatch, loadJoke]);
 
     const handleSelect = (category: string) => history.push(`/${category}`);
 
@@ -42,7 +46,7 @@ const HomePage = () => {
             <NavBar categories={categories} onSelectCategory={handleSelect}/>
             <Container>
                 <Row>
-                    <Joke category={category} joke={joke}/>
+                    <Joke category={category} joke={joke} onLoadAnotherJoke={loadJoke}/>
                 </Row>
                 <Row>
                     <Col>
