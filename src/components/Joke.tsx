@@ -48,7 +48,7 @@ const Joke: React.FC<JokeProps> = ({category, joke, onLoadAnotherJoke, categorie
                     </Card.Title>
                     <Card.Text>{joke.value}</Card.Text>
                     <Button variant="outline-secondary" onClick={handleLoadAnotherJoke}>
-                        Another one
+                        Another <b>{category}</b> joke
                     </Button>
                 </Card.Body>
             </StyledCard>
