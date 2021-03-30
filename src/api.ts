@@ -12,6 +12,7 @@ const api = {
       method: 'get',
       path: `random?category=${category}`,
     }),
+
     search: (query: string): RequestType => ({
       method: 'get',
       path: `search?query=${query}`,

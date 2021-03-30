@@ -2,6 +2,7 @@ import { Action } from '../actions/Action';
 import { CLEAR_SEARCH_JOKES, FETCH_JOKE, SEARCH_JOKES } from '../ActionTypes';
 
 export type JokeState = {
+  // eslint-disable-next-line camelcase
   icon_url: string;
   id: string;
   url: string;
