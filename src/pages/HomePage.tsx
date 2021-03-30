@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Container, Row} from "react-bootstrap";
+import {Col, Container, Row} from "react-bootstrap";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams, useHistory} from "react-router-dom";
 
@@ -42,10 +42,12 @@ const HomePage = () => {
             <NavBar categories={categories} onSelectCategory={handleSelect}/>
             <Container>
                 <Row>
-                    <Row>
-                        <Joke category={category} joke={joke}/>
+                    <Joke category={category} joke={joke}/>
+                </Row>
+                <Row>
+                    <Col>
                         <Search results={searchResults} onSearch={handleSearch}/>
-                    </Row>
+                    </Col>
                 </Row>
             </Container>
         </>

@@ -20,13 +20,25 @@ const Search: React.FC<SearchProps> = ({results, onSearch}) => {
         setQuery(event.target.value);
     }
 
-    return <Form onSubmit={handleSubmit}>
-        <Form.Control type="text" placeholder="Search joke" value={query} onChange={handleChange}/>
-        <br/>
-        <ListGroup>
-            {results.map((joke: JokeState) => (<ListGroup.Item>{joke.value}</ListGroup.Item>))}
-        </ListGroup>
-    </Form>
+    return (
+        <>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group>
+                    <Form.Label><b>Search more jokes</b></Form.Label>
+                    <Form.Control
+                        type="text"
+                        value={query}
+                        onChange={handleChange}
+                        placeholder="Enter search query e.g. Food"
+                    />
+                </Form.Group>
+            </Form>
+            <br/>
+            <ListGroup>
+                {results.map((joke: JokeState) => (<ListGroup.Item key={joke.id}>{joke.value}</ListGroup.Item>))}
+            </ListGroup>
+        </>
+    );
 }
 
 export default Search;
