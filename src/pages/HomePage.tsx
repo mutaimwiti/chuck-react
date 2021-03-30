@@ -1,41 +1,41 @@
 import React, { useCallback, useEffect } from 'react';
-import { Col, Container, Row } from 'react-bootstrap'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams, useHistory } from 'react-router-dom'
+import { Col, Container, Row } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams, useHistory } from 'react-router-dom';
 
-import Joke from '../components/Joke'
-import { State } from '../store/reducers'
-import NavBar from '../components/NavBar'
-import Search from '../components/Search'
-import { getRandomElement } from '../utils'
-import { fetchCategories } from '../store/actions/categories'
-import { CategoriesState } from '../store/reducers/categories'
-import { JokeState, SearchState } from '../store/reducers/joke'
+import Joke from '../components/Joke';
+import { State } from '../store/reducers';
+import NavBar from '../components/NavBar';
+import Search from '../components/Search';
+import { getRandomElement } from '../utils';
+import { fetchCategories } from '../store/actions/categories';
+import { CategoriesState } from '../store/reducers/categories';
+import { JokeState, SearchState } from '../store/reducers/joke';
 import {
   clearSearchJokes,
   fetchJoke,
   searchJokes,
-} from '../store/actions/jokes'
+} from '../store/actions/jokes';
 
 const HomePage = () => {
   const history = useHistory();
-  const dispatch = useDispatch()
-  const { category }: any = useParams()
-  const joke = useSelector<State, JokeState>((state) => state.joke)
+  const dispatch = useDispatch();
+  const { category }: any = useParams();
+  const joke = useSelector<State, JokeState>((state) => state.joke);
   const categories = useSelector<State, CategoriesState>(
-    (state) => state.categories
-  )
+    (state) => state.categories,
+  );
   const searchResults = useSelector<State, SearchState>(
-    (state) => state.searchResults
-  )
+    (state) => state.searchResults,
+  );
 
   const loadJoke = useCallback(() => {
     dispatch(fetchJoke(category));
-  }, [dispatch, category])
+  }, [dispatch, category]);
 
   useEffect(() => {
     dispatch(fetchCategories());
-  }, [dispatch])
+  }, [dispatch]);
 
   useEffect(() => {
     if (category) {
@@ -45,11 +45,11 @@ const HomePage = () => {
     }
   }, [category, categories, history, dispatch, loadJoke]);
 
-  const handleSelect = (category: string) => history.push(`/${category}`)
+  const handleSelect = (category: string) => history.push(`/${category}`);
 
-  const handleSearch = (query: string) => dispatch(searchJokes(query))
+  const handleSearch = (query: string) => dispatch(searchJokes(query));
 
-  const handleClearSearch = () => dispatch(clearSearchJokes())
+  const handleClearSearch = () => dispatch(clearSearchJokes());
 
   return (
     <>
@@ -75,7 +75,7 @@ const HomePage = () => {
         </Row>
       </Container>
     </>
-  )
-}
+  );
+};
 
 export default HomePage;

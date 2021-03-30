@@ -17,18 +17,27 @@ const StyledCard = styled(Card)`
   border: none;
 `;
 
-const Joke: React.FC<JokeProps> = ({ category, joke, onLoadAnotherJoke, categories, onSelectCategory }) => {
+const Joke: React.FC<JokeProps> = ({
+  category,
+  joke,
+  onLoadAnotherJoke,
+  categories,
+  onSelectCategory,
+}) => {
   const handleLoadAnotherJoke = (event: MouseEvent<HTMLButtonElement>) => {
-    event.currentTarget.blur()
-        onLoadAnotherJoke()
-    };
+    event.currentTarget.blur();
+    onLoadAnotherJoke();
+  };
 
-  const handleSelectCategory = (event: MouseEvent<HTMLButtonElement>, category: string) => {
-    event.currentTarget.blur()
-        onSelectCategory(category)
-    }
+  const handleSelectCategory = (
+    event: MouseEvent<HTMLButtonElement>,
+    category: string,
+  ) => {
+    event.currentTarget.blur();
+    onSelectCategory(category);
+  };
 
-  return <>
+  return (
     <>
       {joke && (
         <StyledCard>
@@ -39,7 +48,7 @@ const Joke: React.FC<JokeProps> = ({ category, joke, onLoadAnotherJoke, categori
                   <Dropdown.Item
                     key={category}
                     onClick={(event: MouseEvent<HTMLButtonElement>) => {
-                                      handleSelectCategory(event, category)
+                      handleSelectCategory(event, category);
                     }}
                   >
                     {category}
@@ -58,4 +67,4 @@ const Joke: React.FC<JokeProps> = ({ category, joke, onLoadAnotherJoke, categori
   );
 };
 
-export default Joke
+export default Joke;

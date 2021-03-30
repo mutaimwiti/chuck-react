@@ -6,13 +6,14 @@ type NavBarProps = {
 };
 
 const NavBar: React.FC<NavBarProps> = ({ onGoHome }) => {
-  return <Navbar bg="primary" variant="dark">
+  return (
+    <Navbar bg="primary" variant="dark">
       <Navbar.Brand href="#" onClick={() => onGoHome()}>
         Chuck React
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
     </Navbar>
   );
-}
+};
 
-export default NavBar
+export default NavBar;

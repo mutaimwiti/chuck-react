@@ -1,5 +1,5 @@
-import { Action } from '../actions/Action'
-import { FETCH_CATEGORIES } from '../ActionTypes'
+import { Action } from '../actions/Action';
+import { FETCH_CATEGORIES } from '../ActionTypes';
 
 export type CategoriesState = string[];
 
@@ -13,6 +13,6 @@ const categories = (state: CategoriesState = initialState, action: Action) => {
     default:
       return state;
   }
-}
+};
 
 export default categories;
