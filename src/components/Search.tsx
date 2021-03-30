@@ -1,6 +1,6 @@
 import debounce from 'lodash.debounce';
 import React, {ChangeEvent, useState, MouseEvent} from "react";
-import {Button, Form, InputGroup, ListGroup} from "react-bootstrap";
+import {Alert, Button, Form, InputGroup, ListGroup} from "react-bootstrap";
 
 import {JokeState, SearchState} from "../store/reducers/joke";
 
@@ -12,7 +12,7 @@ type SearchProps = {
 
 const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
     const [query, setQuery] = useState('');
-    const [invalid, setInvalid] = useState(true);
+    const [valid, setValid] = useState(true);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
@@ -22,10 +22,10 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
         if (value.length >= 3) {
             const debouncedSearch = debounce(() => onSearch(value), 300);
             debouncedSearch();
-            setInvalid(false);
+            setValid(true);
         } else {
             onClearSearch();
-            setInvalid(true);
+            setValid(false);
         }
     }
 
@@ -52,13 +52,14 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
                         </InputGroup.Append>
                     </InputGroup>
                     {
-                        invalid && (<Form.Text muted>
+                        !valid && (<Form.Text muted>
                             Your search phrase must be 3 characters or longer
                         </Form.Text>)
                     }
                 </Form.Group>
             </Form>
             <br/>
+            {valid && !results.length && <Alert variant="warning">No results to display</Alert>}
             <ListGroup>
                 {results.map((joke: JokeState) => (<ListGroup.Item key={joke.id}>{joke.value}</ListGroup.Item>))}
             </ListGroup>
