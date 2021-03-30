@@ -8,9 +8,11 @@ export type JokeState = {
     value: string
 };
 
-export type SearchState = JokeState[];
+export type SearchState = { items: JokeState[], isLoading: boolean };
 
-export const joke = (state: JokeState | null = null, action: Action) => {
+const jokeInitialState = null;
+
+export const joke = (state: JokeState | null = jokeInitialState, action: Action) => {
     switch (action.type) {
         case `${FETCH_JOKE}_SUCCESS`: {
             return action.payload;
@@ -20,13 +22,18 @@ export const joke = (state: JokeState | null = null, action: Action) => {
     }
 }
 
-export const searchResults = (state: SearchState = [], action: Action) => {
+const searchInitialState = {items: [], isLoading: false};
+
+export const searchResults = (state: SearchState = searchInitialState, action: Action) => {
     switch (action.type) {
         case `${SEARCH_JOKES}_SUCCESS`: {
-            return action.payload.result;
+            return {items: action.payload.result, isLoading: false};
+        }
+        case `${SEARCH_JOKES}_REQUESTING`: {
+            return {...state, isLoading: true};
         }
         case CLEAR_SEARCH_JOKES: {
-            return [];
+            return searchInitialState;
         }
         default:
             return state;

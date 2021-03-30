@@ -11,8 +11,10 @@ type SearchProps = {
 }
 
 const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
+    const {items, isLoading} = results;
+
     const [query, setQuery] = useState('');
-    const [valid, setValid] = useState(true);
+    const [valid, setValid] = useState(false);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         const {value} = event.target;
@@ -59,9 +61,15 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
                 </Form.Group>
             </Form>
             <br/>
-            {valid && !results.length && <Alert variant="warning">No results to display</Alert>}
+            {
+                isLoading ? <Alert variant="info">Loading jokes...</Alert> : (
+                    valid && !items.length && <Alert variant="warning">No results to display</Alert>
+                )
+            }
             <ListGroup>
-                {results.map((joke: JokeState) => (<ListGroup.Item key={joke.id}>{joke.value}</ListGroup.Item>))}
+                {items.map((joke: JokeState) => {
+                    return <ListGroup.Item key={joke.id}>{joke.value}</ListGroup.Item>
+                })}
             </ListGroup>
         </>
     );
