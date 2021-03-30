@@ -11,7 +11,7 @@ import {getRandomElement} from "../utils";
 import {fetchCategories} from "../store/actions/categories";
 import {CategoriesState} from "../store/reducers/categories";
 import {JokeState, SearchState} from "../store/reducers/joke";
-import {fetchJoke, searchJokes} from "../store/actions/jokes";
+import {clearSearchJokes, fetchJoke, searchJokes} from "../store/actions/jokes";
 
 const HomePage = () => {
     const history = useHistory();
@@ -41,6 +41,8 @@ const HomePage = () => {
 
     const handleSearch = (query: string) => dispatch(searchJokes(query));
 
+    const handleClearSearch = () => dispatch(clearSearchJokes());
+
     return (
         <>
             <NavBar categories={categories} onSelectCategory={handleSelect}/>
@@ -50,7 +52,7 @@ const HomePage = () => {
                 </Row>
                 <Row>
                     <Col>
-                        <Search results={searchResults} onSearch={handleSearch}/>
+                        <Search results={searchResults} onSearch={handleSearch} onClearSearch={handleClearSearch}/>
                     </Col>
                 </Row>
             </Container>

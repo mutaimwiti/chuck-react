@@ -1,5 +1,5 @@
 import {Action} from "../actions/Action";
-import {FETCH_JOKE, SEARCH_JOKES} from "../ActionTypes";
+import {CLEAR_SEARCH_JOKES, FETCH_JOKE, SEARCH_JOKES} from "../ActionTypes";
 
 export type JokeState = {
     icon_url: string,
@@ -24,6 +24,9 @@ export const searchResults = (state: SearchState = [], action: Action) => {
     switch (action.type) {
         case `${SEARCH_JOKES}_SUCCESS`: {
             return action.payload.result;
+        }
+        case CLEAR_SEARCH_JOKES: {
+            return [];
         }
         default:
             return state;
