@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar } from 'react-bootstrap';
 
-type NavBarProps = {
+export type NavBarProps = {
   onGoHome(): void;
 };
 

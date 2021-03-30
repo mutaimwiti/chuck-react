@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar should match snapshot 1`] = `
+<div>
+  <nav
+    class="navbar navbar-expand navbar-dark bg-primary"
+  >
+    <a
+      class="navbar-brand"
+      href="#"
+    >
+      Chuck React
+    </a>
+    <button
+      aria-controls="basic-navbar-nav"
+      aria-label="Toggle navigation"
+      class="navbar-toggler collapsed"
+      type="button"
+    >
+      <span
+        class="navbar-toggler-icon"
+      />
+    </button>
+  </nav>
+</div>
+`;
