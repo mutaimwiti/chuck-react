@@ -7,15 +7,15 @@ import {
   fetchJoke,
   searchJokes,
   clearSearchJokes,
-} from '../store/actions/jokes';
-import Joke from '../components/Joke';
-import NavBar from '../components/NavBar';
-import Search from '../components/Search';
-import { State } from '../store/reducers';
-import { getRandomElement } from '../utils';
-import { fetchCategories } from '../store/actions/categories';
-import { CategoriesState } from '../store/reducers/categories';
-import { JokeState, SearchState } from '../store/reducers/joke';
+} from '../../store/actions/jokes';
+import Joke from '../../components/Joke';
+import NavBar from '../../components/NavBar';
+import Search from '../../components/Search';
+import { State } from '../../store/reducers';
+import { getRandomElement } from '../../utils';
+import { fetchCategories } from '../../store/actions/categories';
+import { CategoriesState } from '../../store/reducers/categories';
+import { JokeState, SearchState } from '../../store/reducers/joke';
 
 const HomePage = () => {
   const history = useHistory();

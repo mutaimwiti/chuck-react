@@ -3,15 +3,15 @@ import { render } from '@testing-library/react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import HomePage from './HomePage';
-import Joke from '../components/Joke';
-import Search from '../components/Search';
-import NavBar from '../components/NavBar';
+import Joke from '../../components/Joke';
+import Search from '../../components/Search';
+import NavBar from '../../components/NavBar';
 import {
   fetchJoke,
   searchJokes,
   clearSearchJokes,
-} from '../store/actions/jokes';
-import { fetchCategories } from '../store/actions/categories';
+} from '../../store/actions/jokes';
+import { fetchCategories } from '../../store/actions/categories';
 
 const mockHistory = { push: jest.fn(), replace: jest.fn() };
 let mockParams: { category: string | undefined } = { category: 'business' };
@@ -23,11 +23,11 @@ jest.mock('react-router-dom', () => ({
   useHistory: () => mockHistory,
 }));
 
-jest.mock('../components/Joke');
-jest.mock('../components/Search');
-jest.mock('../components/NavBar');
-jest.mock('../store/actions/jokes');
-jest.mock('../store/actions/categories');
+jest.mock('../../components/Joke');
+jest.mock('../../components/Search');
+jest.mock('../../components/NavBar');
+jest.mock('../../store/actions/jokes');
+jest.mock('../../store/actions/categories');
 
 describe('HomePage', function () {
   const joke = {
