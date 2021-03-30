@@ -5,7 +5,7 @@ import { Button, Card, DropdownButton, Dropdown } from 'react-bootstrap';
 import { JokeState } from '../store/reducers/joke';
 import { CategoriesState } from '../store/reducers/categories';
 
-type JokeProps = {
+export type JokeProps = {
   category: string;
   joke: JokeState;
   onLoadAnotherJoke(): void;
@@ -43,10 +43,11 @@ const Joke: React.FC<JokeProps> = ({
         <StyledCard>
           <Card.Body>
             <Card.Title>
-              <DropdownButton id="dropdown-basic-button" title={category}>
+              <DropdownButton data-testid="category-dropdown" title={category}>
                 {categories.map((category: string) => (
                   <Dropdown.Item
                     key={category}
+                    data-testid={`category-dropdown-item-${category}`}
                     onClick={(event: MouseEvent<HTMLButtonElement>) => {
                       handleSelectCategory(event, category);
                     }}
@@ -57,7 +58,11 @@ const Joke: React.FC<JokeProps> = ({
               </DropdownButton>
             </Card.Title>
             <Card.Text>{joke.value}</Card.Text>
-            <Button variant="outline-secondary" onClick={handleLoadAnotherJoke}>
+            <Button
+              variant="outline-secondary"
+              onClick={handleLoadAnotherJoke}
+              data-testid="load-another-joke-button"
+            >
               Another <b>{category}</b> joke
             </Button>
           </Card.Body>

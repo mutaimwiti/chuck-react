@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Joke should match snapshot 1`] = `
+<div>
+  <div
+    class="sc-bdfBwQ vWQJH card"
+  >
+    <div
+      class="card-body"
+    >
+      <div
+        class="card-title h5"
+      >
+        <div
+          class="dropdown"
+          data-testid="category-dropdown"
+        >
+          <button
+            aria-expanded="false"
+            aria-haspopup="true"
+            class="dropdown-toggle btn btn-primary"
+            type="button"
+          >
+            sports
+          </button>
+        </div>
+      </div>
+      <p
+        class="card-text"
+      >
+        This is a joke
+      </p>
+      <button
+        class="btn btn-outline-secondary"
+        data-testid="load-another-joke-button"
+        type="button"
+      >
+        Another 
+        <b>
+          sports
+        </b>
+         joke
+      </button>
+    </div>
+  </div>
+</div>
+`;
