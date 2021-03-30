@@ -1,5 +1,6 @@
+import debounce from 'lodash.debounce';
+import React, {ChangeEvent, useState, MouseEvent} from "react";
 import {Button, Form, InputGroup, ListGroup} from "react-bootstrap";
-import React, {ChangeEvent, FormEvent, useState, MouseEvent} from "react";
 
 import {JokeState, SearchState} from "../store/reducers/joke";
 
@@ -12,13 +13,17 @@ type SearchProps = {
 const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
     const [query, setQuery] = useState('');
 
-    const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        onSearch(query);
-    }
-
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setQuery(event.target.value);
+        const {value} = event.target;
+        setQuery(value);
+
+        // search phrase should be a minimum of 3 three characters
+        if (value.length >= 3) {
+            const debouncedSearch = debounce(() => onSearch(value), 300);
+            debouncedSearch();
+        } else {
+            onClearSearch();
+        }
     }
 
     const handleClear = (event: MouseEvent<HTMLButtonElement>) => {
@@ -29,7 +34,7 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
 
     return (
         <>
-            <Form onSubmit={handleSubmit}>
+            <Form>
                 <Form.Group>
                     <Form.Label><b>Search more jokes</b></Form.Label>
                     <InputGroup className="mb-3">
@@ -37,12 +42,15 @@ const Search: React.FC<SearchProps> = ({results, onSearch, onClearSearch}) => {
                             type="text"
                             value={query}
                             onChange={handleChange}
-                            placeholder="Enter search query e.g. Food"
+                            placeholder="Enter your search phrase e.g. food"
                         />
                         <InputGroup.Append>
                             <Button variant="outline-secondary" onClick={handleClear}>Clear</Button>
                         </InputGroup.Append>
                     </InputGroup>
+                    <Form.Text muted>
+                        Your search phrase must be 3 characters or longer
+                    </Form.Text>
 
                 </Form.Group>
             </Form>
