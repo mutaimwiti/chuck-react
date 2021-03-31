@@ -1,4 +1,4 @@
-import api from '../../api';
+import api from '../../utils/api';
 import { Action } from './Action';
 import { FETCH_CATEGORIES } from '../ActionTypes';
 

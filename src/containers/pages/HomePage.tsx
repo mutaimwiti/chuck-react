@@ -12,7 +12,7 @@ import Joke from '../../components/Joke';
 import NavBar from '../../components/NavBar';
 import Search from '../../components/Search';
 import { State } from '../../store/reducers';
-import { getRandomElement } from '../../utils';
+import { getRandomElement } from '../../utils/helpers';
 import { fetchCategories } from '../../store/actions/categories';
 import { CategoriesState } from '../../store/reducers/categories';
 import { JokeState, SearchState } from '../../store/reducers/joke';
