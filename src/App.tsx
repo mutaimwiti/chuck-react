@@ -6,7 +6,7 @@ import HomePage from './containers/pages/HomePage';
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/:category?" component={HomePage} />
       </Switch>
