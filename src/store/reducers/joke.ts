@@ -11,7 +11,7 @@ export type JokeState = {
 
 export type SearchState = { items: JokeState[]; isLoading: boolean };
 
-const jokeInitialState = null;
+export const jokeInitialState = null;
 
 export const joke = (
   state: JokeState | null = jokeInitialState,
@@ -26,7 +26,7 @@ export const joke = (
   }
 };
 
-const searchInitialState = { items: [], isLoading: false };
+export const searchInitialState = { items: [], isLoading: false };
 
 export const searchResults = (
   state: SearchState = searchInitialState,
