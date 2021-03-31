@@ -32,7 +32,7 @@ describe('Joke', function () {
   });
 
   it('should display joke', () => {
-    const { getByText } = render(<Joke {...props} />);
+    const { getByText } = render(<Joke {...{ ...props }} />);
 
     expect(getByText('This is a joke')).toBeInTheDocument();
   });
@@ -67,6 +67,14 @@ describe('Joke', function () {
 
       expect(props.onSelectCategory).toHaveBeenCalledTimes(1);
       expect(props.onSelectCategory).toHaveBeenCalledWith('art');
+    });
+  });
+
+  describe('when there is no joke', () => {
+    it('should render spinner', () => {
+      const { getByTestId } = render(<Joke {...{ ...props, joke: null }} />);
+
+      expect(getByTestId('joke-spinner')).toBeInTheDocument();
     });
   });
 });
