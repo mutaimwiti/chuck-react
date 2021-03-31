@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Action } from '../actions/Action';
+import { Action } from '../ActionTypes';
 import { RequestType } from '../../utils/api';
 
 export const baseUrl = 'https://api.chucknorris.io/jokes';

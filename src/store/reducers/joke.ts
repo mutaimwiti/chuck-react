@@ -1,5 +1,9 @@
-import { Action } from '../actions/Action';
-import { CLEAR_SEARCH_JOKES, FETCH_JOKE, SEARCH_JOKES } from '../ActionTypes';
+import {
+  Action,
+  FETCH_JOKE,
+  SEARCH_JOKES,
+  CLEAR_SEARCH_JOKES,
+} from '../ActionTypes';
 
 export type JokeState = {
   // eslint-disable-next-line camelcase

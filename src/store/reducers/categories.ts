@@ -1,5 +1,4 @@
-import { Action } from '../actions/Action';
-import { FETCH_CATEGORIES } from '../ActionTypes';
+import { Action, FETCH_CATEGORIES } from '../ActionTypes';
 
 export type CategoriesState = string[];
 
