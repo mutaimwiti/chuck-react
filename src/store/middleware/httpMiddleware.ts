@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { RequestType } from '../../utils/api';
 import { Action } from '../actions/Action';
+import { RequestType } from '../../utils/api';
 
-const baseUrl = 'https://api.chucknorris.io/jokes';
+export const baseUrl = 'https://api.chucknorris.io/jokes';
 
 const httpMiddleware = (store: any) => (next: any) => (action: Action) => {
   if (action.request) {
