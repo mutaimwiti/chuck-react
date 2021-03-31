@@ -3,7 +3,7 @@ import { FETCH_CATEGORIES } from '../ActionTypes';
 
 export type CategoriesState = string[];
 
-const initialState: CategoriesState = [];
+export const initialState: CategoriesState = [];
 
 const categories = (state: CategoriesState = initialState, action: Action) => {
   switch (action.type) {
