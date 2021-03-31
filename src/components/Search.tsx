@@ -44,7 +44,7 @@ const Search: React.FC<SearchProps> = ({
 
   return (
     <>
-      <Form>
+      <Form onSubmit={(event) => event.preventDefault()}>
         <Form.Group>
           <Form.Label>
             <b>Search more jokes</b>
